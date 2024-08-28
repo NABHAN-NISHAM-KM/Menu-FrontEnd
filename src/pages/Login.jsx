@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { MdLocalDining } from "react-icons/md";
 import { FaUser } from "react-icons/fa";
 import { MdPassword } from "react-icons/md";
@@ -32,7 +32,7 @@ const Login = () => {
                 value={username}
                 onChange={(event) => setUsername(event.target.value)}
                 required
-                className="p-2 pl-10 border border-gray-300 rounded-full text-base mb-2 w-full"
+                className="p-2 pl-10 shadow-lg rounded-full text-base mb-2 w-full"
               />
             </div>
           </div>
@@ -46,12 +46,12 @@ const Login = () => {
                 value={password}
                 onChange={(event) => setPassword(event.target.value)}
                 required
-                className="p-2 pl-10 border border-gray-300 rounded-full text-base w-full"
+                className="p-2 pl-10 shadow-lg rounded-full text-base w-full"
               />
             </div>
           </div>
           <div className="flex justify-end mb-5">
-            <a href="#" className="text-sm text-gray-700 hover:underline">
+            <a href="#" className="text-sm text-green-500 hover:underline">
               Forgot your password?
             </a>
           </div>
@@ -67,7 +67,7 @@ const Login = () => {
         </form>
         <div className="flex flex-col items-center justify-center space-y-2">
           <p className="text-sm text-gray-700">
-            Don't have an account?{" "}
+            Don&apos;t have an account?{" "}
             <a href="/signup" className="text-green-500 hover:underline">
               Sign up
             </a>
