@@ -3,6 +3,7 @@ import { MdLocalDining } from "react-icons/md";
 import { FaUser } from "react-icons/fa";
 import { MdPassword } from "react-icons/md";
 import { FaArrowRight } from "react-icons/fa";
+import { TfiArrowCircleLeft } from "react-icons/tfi";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -14,9 +15,21 @@ const Login = () => {
     console.log("Password:", password);
   };
 
+  const handleBackButtonClick = () => {
+    window.history.back();
+  };
+
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-green-400 relative ">
+    <div className="flex items-center justify-center h-screen bg-green-400 relative ">
       <div className="flex flex-col items-center justify-center bg-white p-12 w-3/5 rounded-lg shadow-md">
+        <div className="flex items-start w-full ">
+          <button
+            onClick={handleBackButtonClick}
+            className="text-gray-500 hover:text-gray-700"
+          >
+            <TfiArrowCircleLeft className="w-8 h-8" />
+          </button>
+        </div>
         <div className="flex items-center justify-center w-12 h-12 rounded-full bg-green-400 mb-8">
           <MdLocalDining className="text-4xl text-white" />
         </div>

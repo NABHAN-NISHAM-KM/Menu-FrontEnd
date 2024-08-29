@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Tooltip as ReactTooltip } from "react-tooltip";
 import { MdLocalDining } from "react-icons/md";
 import { FaUser } from "react-icons/fa";
 import { MdPassword } from "react-icons/md";
@@ -11,6 +12,17 @@ import { FcGoogle } from "react-icons/fc";
 import { MdDinnerDining } from "react-icons/md";
 import { FaLocationDot } from "react-icons/fa6";
 import { GiShop } from "react-icons/gi";
+import { IoFastFoodSharp } from "react-icons/io5";
+import { MdOutlineBrunchDining } from "react-icons/md";
+import { GiChickenOven } from "react-icons/gi";
+import { IoIosCafe } from "react-icons/io";
+import { BiSolidDish } from "react-icons/bi";
+import { GiFoodTruck } from "react-icons/gi";
+import { TfiArrowCircleLeft } from "react-icons/tfi";
+import { FaBowlRice } from "react-icons/fa6";
+import { PiBowlSteamFill } from "react-icons/pi";
+import { FaInfoCircle } from "react-icons/fa";
+import "../styles/SignUp.css";
 
 const SignUp = () => {
   const [username, setUsername] = useState("");
@@ -19,6 +31,8 @@ const SignUp = () => {
   const [phonenumber, setPhoneNumber] = useState("");
   const [isUserSignUp, setIsUserSignUp] = useState(true);
   const [restaurantType, setRestaurantType] = useState("");
+  const [restaurantName, setRestaurantName] = useState("");
+  const [location, setLocation] = useState("");
 
   const handleUserSignUp = () => {
     setIsUserSignUp(true);
@@ -27,22 +41,38 @@ const SignUp = () => {
   const handleRestaurantSignUp = () => {
     setIsUserSignUp(false);
   };
+  const handleBackButtonClick = () => {
+    window.history.back();
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("Username:", username);
-    console.log("Password:", password);
-    console.log("Email:", email);
-    console.log("Phone Number:", phonenumber);
+    console.log("Username: ", username);
+    console.log("Password: ", password);
+    console.log("Email: ", email);
+    console.log("Phone Number: ", phonenumber);
+    if (!isUserSignUp) {
+      console.log("Restaurant Name: ", restaurantName);
+      console.log("Location: ", location);
+      console.log("Restaurant Type: ", restaurantType);
+    }
     console.log(
       isUserSignUp ? "Signing up as User" : "Signing up as Restaurant"
     );
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-full bg-green-400 relative">
-      <div className="flex flex-col items-center justify-center bg-white p-12 w-3/5 rounded-lg shadow-md">
-        <div className="flex items-center justify-center w-12 h-12 rounded-full bg-green-400 mb-8">
+    <div className="flex flex-col items-center justify-center h-screen bg-green-400 relative">
+      <div className="flex flex-col items-center justify-center bg-white p-6 w-3/5 rounded-lg shadow-md">
+        <div className="flex items-start w-full ">
+          <button
+            onClick={handleBackButtonClick}
+            className="text-gray-500 hover:text-gray-700"
+          >
+            <TfiArrowCircleLeft className="w-8 h-8" />
+          </button>
+        </div>
+        <div className="flex items-center justify-center w-12 h-12 rounded-full bg-green-400 mb-2">
           <MdLocalDining className="text-4xl text-white" />
         </div>
         <h1 className="text-2xl font-semibold mb-8">
@@ -138,6 +168,8 @@ const SignUp = () => {
                     type="text"
                     id="restaurantname"
                     placeholder="Restaurant Name"
+                    value={restaurantName}
+                    onChange={(event) => setRestaurantName(event.target.value)}
                     required
                     className="p-2 pl-10 shadow-lg rounded-full text-base w-full"
                   />
@@ -150,6 +182,8 @@ const SignUp = () => {
                     type="text"
                     id="location"
                     placeholder="Location"
+                    value={location}
+                    onChange={(event) => setLocation(event.target.value)}
                     required
                     className="p-2 pl-10 shadow-lg rounded-full text-base w-full"
                   />
@@ -157,7 +191,33 @@ const SignUp = () => {
               </div>
               <div className="flex flex-col mb-4">
                 <div className="relative">
-                  <GiShop className="absolute left-3 top-5 transform -translate-y-1/2 text-gray-400 text-lg" />
+                  {restaurantType === "" || restaurantType === "others" ? (
+                    <GiShop className="absolute left-3 top-5 transform -translate-y-1/2 text-gray-400 text-lg" />
+                  ) : null}
+                  {restaurantType === "fastfood" && (
+                    <IoFastFoodSharp className="absolute left-3 top-5 transform -translate-y-1/2 text-gray-400 text-lg" />
+                  )}
+                  {restaurantType === "casualdining" && (
+                    <GiChickenOven className="absolute left-3 top-5 transform -translate-y-1/2 text-gray-400 text-lg" />
+                  )}
+                  {restaurantType === "finedining" && (
+                    <MdOutlineBrunchDining className="absolute left-3 top-5 transform -translate-y-1/2 text-gray-400 text-lg" />
+                  )}
+                  {restaurantType === "cafe" && (
+                    <IoIosCafe className="absolute left-3 top-5 transform -translate-y-1/2 text-gray-400 text-lg" />
+                  )}
+                  {restaurantType === "buffet" && (
+                    <BiSolidDish className="absolute left-3 top-5 transform -translate-y-1/2 text-gray-400 text-lg" />
+                  )}
+                  {restaurantType === "foodtruck" && (
+                    <GiFoodTruck className="absolute left-3 top-5 transform -translate-y-1/2 text-gray-400 text-lg" />
+                  )}
+                  {restaurantType === "vegtarian" && (
+                    <FaBowlRice className="absolute left-3 top-5 transform -translate-y-1/2 text-gray-400 text-lg" />
+                  )}
+                  {restaurantType === "ethniccuisine" && (
+                    <PiBowlSteamFill className="absolute left-3 top-5 transform -translate-y-1/2 text-gray-400 text-lg" />
+                  )}
                   <select
                     id="restaurantType"
                     value={restaurantType}
@@ -174,9 +234,47 @@ const SignUp = () => {
                     <option value="cafe">Cafe</option>
                     <option value="buffet">Buffet</option>
                     <option value="foodtruck">Food Truck</option>
+                    <option value="vegtarian">Vegtarian</option>
+                    <option value="ethniccuisine">Ethnic Cuisine</option>
                     <option value="others">Others</option>
                   </select>
                 </div>
+                {restaurantType && (
+                  <>
+                    <FaInfoCircle
+                      data-tooltip-id="my-tooltip"
+                      data-tooltip-place="bottom-start"
+                      data-tooltip-content={
+                        restaurantType === "fastfood"
+                          ? "Quick, easy meals."
+                          : restaurantType === "casualdining"
+                          ? "Relaxed atmosphere with moderate pricing."
+                          : restaurantType === "finedining"
+                          ? "High-end dining with a formal atmosphere."
+                          : restaurantType === "cafe"
+                          ? "Light meals and coffee."
+                          : restaurantType === "buffet"
+                          ? "All-you-can-eat with a variety of dishes."
+                          : restaurantType === "foodtruck"
+                          ? "Mobile kitchen serving street food."
+                          : restaurantType === "vegtarian"
+                          ? "Plant-based and health-conscious meals.."
+                          : restaurantType === "ethniccuisine"
+                          ? "Traditional dishes from a specific culture."
+                          : restaurantType === "others"
+                          ? "Unique or niche dining experiences."
+                          : ""
+                      }
+                      className="absolute ml-60 mt-3 text-gray-400 text-lg cursor-pointer"
+                    />
+                    <ReactTooltip
+                      id="my-tooltip"
+                      className="custom-tooltip"
+                      noArrow
+                      variant="success"
+                    />
+                  </>
+                )}
               </div>
             </>
           )}
