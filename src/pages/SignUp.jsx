@@ -72,14 +72,14 @@ const SignUp = () => {
             <TfiArrowCircleLeft className="w-8 h-8" />
           </button>
         </div>
-        <div className="flex items-center justify-center w-12 h-12 rounded-full bg-green-400 mb-2">
+        <div className="flex items-center justify-center w-12 h-12 rounded-full bg-green-400">
           <MdLocalDining className="text-4xl text-white" />
         </div>
-        <h1 className="text-2xl font-semibold mb-8">
+        <h1 className="text-2xl font-semibold mb-4">
           {isUserSignUp ? "Create User Account" : "Create Restaurant Account"}
         </h1>
 
-        <div className="flex items-center justify-around mb-6">
+        <div className="flex items-center justify-around mb-2">
           <button
             onClick={handleUserSignUp}
             className={`px-6 py-2 rounded-full font-medium ${
@@ -163,7 +163,7 @@ const SignUp = () => {
             <>
               <div className="flex flex-col mb-4">
                 <div className="relative">
-                  <MdDinnerDining className="absolute left-3 top-5 transform -translate-y-1/2 text-gray-400 text-lg" />
+                  <GiShop className="absolute left-3 top-5 transform -translate-y-1/2 text-gray-400 text-lg" />
                   <input
                     type="text"
                     id="restaurantname"
@@ -192,7 +192,7 @@ const SignUp = () => {
               <div className="flex flex-col mb-4">
                 <div className="relative">
                   {restaurantType === "" || restaurantType === "others" ? (
-                    <GiShop className="absolute left-3 top-5 transform -translate-y-1/2 text-gray-400 text-lg" />
+                    <MdDinnerDining className="absolute left-3 top-5 transform -translate-y-1/2 text-gray-400 text-lg" />
                   ) : null}
                   {restaurantType === "fastfood" && (
                     <IoFastFoodSharp className="absolute left-3 top-5 transform -translate-y-1/2 text-gray-400 text-lg" />
